@@ -5,10 +5,18 @@ import react from '@vitejs/plugin-react'
 import path from "path";
 
 export default defineConfig({
+  base: '/Traveloop/',
   plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  css: {
+    transformer: 'postcss',
+    minify: 'esbuild',
+  },
+  build: {
+    cssMinify: 'esbuild',
   },
 })
