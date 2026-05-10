@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Palette, Eye, MapPin } from 'lucide-react';
+import { useMapModal } from '../context/MapModalContext';
 import './ColoursOfIndia.css';
 
 const COLOURS = [
@@ -55,6 +56,7 @@ const COLOURS = [
 
 export default function ColoursOfIndia() {
   const [active, setActive] = useState(null);
+  const { showMap } = useMapModal();
 
   return (
     <div className="page-container">
@@ -94,7 +96,7 @@ export default function ColoursOfIndia() {
               <p className="colour-desc">{c.description}</p>
               <div className="colour-places">
                 {c.places.map((p, j) => (
-                  <span key={j} className="colour-place" style={{ borderColor: c.hex }}>
+                  <span key={j} className="colour-place clickable" style={{ borderColor: c.hex }} onClick={() => showMap(p)}>
                     <Eye size={11} /> {p}
                   </span>
                 ))}

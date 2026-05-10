@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../utils/database';
 import { Sparkles, Mountain, Heart, Waves, Tent, UtensilsCrossed, Camera, Music, Palette, TreePine } from 'lucide-react';
+import { useMapModal } from '../context/MapModalContext';
 import './Experiences.css';
 
 const EXPERIENCE_DATA = [
@@ -58,30 +59,7 @@ const EXPERIENCE_DATA = [
 export default function Experiences() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null);
-  const [selectedHighlight, setSelectedHighlight] = useState(null);
-  const [wikiData, setWikiData] = useState({ description: '', image: '' });
-  const [wikiLoading, setWikiLoading] = useState(false);
-
-  const openHighlightInfo = (highlight) => {
-    setSelectedHighlight(highlight);
-    setWikiLoading(true);
-    // Simple search term extraction
-    const searchTerm = highlight.split(',')[0].trim();
-    fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(searchTerm)}`)
-      .then(res => res.json())
-      .then(data => {
-        setWikiData({
-          description: data.extract || '',
-          image: data.thumbnail ? data.thumbnail.source : ''
-        });
-        setWikiLoading(false);
-      })
-      .catch(err => {
-        console.error('Wiki fetch error', err);
-        setWikiData({ description: 'Information could not be loaded.', image: '' });
-        setWikiLoading(false);
-      });
-  };
+  const { showMap } = useMapModal();
 
   return (
     <div className="page-container">
@@ -118,7 +96,7 @@ export default function Experiences() {
                   <h4><Sparkles size={14} /> Top Highlights</h4>
                   <ul className="exp-highlights-list">
                     {exp.highlights.map((h, j) => (
-                      <li key={j} className="highlight-item" onClick={(e) => { e.stopPropagation(); openHighlightInfo(h); }}>
+                      <li key={j} className="highlight-item" onClick={(e) => { e.stopPropagation(); showMap(h); }}>
                         {h}
                       </li>
                     ))}
@@ -132,41 +110,6 @@ export default function Experiences() {
           );
         })}
       </div>
-
-      {/* Highlight Map & Info Modal */}
-      {selectedHighlight && (
-        <div className="highlight-modal-overlay animate-fadeIn" onClick={() => setSelectedHighlight(null)}>
-          <div className="highlight-modal animate-fadeInUp" onClick={(e) => e.stopPropagation()}>
-            <button className="close-modal" onClick={() => setSelectedHighlight(null)}>×</button>
-            <div className="modal-header">
-              <h2>{selectedHighlight}</h2>
-            </div>
-            
-            <div className="modal-body">
-              {wikiLoading ? (
-                <div className="app-loading"><span className="spinner" /></div>
-              ) : (
-                <div className="wiki-content">
-                  {wikiData.image && <img src={wikiData.image} alt={selectedHighlight} className="wiki-image" />}
-                  <p>{wikiData.description || 'No detailed description available for this location.'}</p>
-                </div>
-              )}
-              
-              <div className="map-container mt-4">
-                <iframe
-                  title={`${selectedHighlight} Map`}
-                  width="100%"
-                  height="300"
-                  frameBorder="0"
-                  style={{ border: 0, borderRadius: 'var(--radius-md)' }}
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(selectedHighlight)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

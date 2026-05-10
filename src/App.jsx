@@ -24,6 +24,7 @@ import Festivals from './pages/Festivals';
 import ColoursOfIndia from './pages/ColoursOfIndia';
 import TravelForLife from './pages/TravelForLife';
 import CityDetail from './pages/CityDetail';
+import { MapModalProvider } from './context/MapModalContext';
 
 import './App.css';
 
@@ -56,7 +57,8 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <ToastProvider>
-          <Routes>
+          <MapModalProvider>
+            <Routes>
             {/* Public */}
             <Route element={<PublicRoute />}>
               <Route path="/login" element={<Login />} />
@@ -87,6 +89,7 @@ export default function App() {
             {/* Default */}
             <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
+        </MapModalProvider>
         </ToastProvider>
       </AuthProvider>
     </BrowserRouter>

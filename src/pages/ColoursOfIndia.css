@@ -50,6 +50,16 @@
   background: var(--color-bg-tertiary); border-radius: var(--radius-full);
   color: var(--color-text-secondary); border-left: 3px solid var(--card-accent);
 }
+.colour-place.clickable {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.colour-place.clickable:hover {
+  background: var(--color-bg-secondary);
+  color: white;
+  transform: translateY(-2px);
+  border-left-width: 4px;
+}
 
 @media (max-width: 768px) {
   .colour-grid { grid-template-columns: 1fr; }

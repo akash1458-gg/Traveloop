@@ -161,9 +161,14 @@
   transition: all var(--transition-base);
 }
 
-.place-card:hover {
+.place-card.clickable {
+  cursor: pointer;
+}
+
+.place-card:hover, .place-card.clickable:hover {
   transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.2);
+  border-color: rgba(255,204,0,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .place-card img {

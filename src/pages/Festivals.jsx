@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CalendarDays, MapPin, Filter, Sparkles, Star } from 'lucide-react';
+import { useMapModal } from '../context/MapModalContext';
 import './Festivals.css';
 
 const FESTIVALS = [
@@ -23,6 +24,7 @@ const MONTHS = ['All Months', 'January', 'March', 'April', 'August/September', '
 export default function Festivals() {
   const [typeFilter, setTypeFilter] = useState('All');
   const [selected, setSelected] = useState(null);
+  const { showMap } = useMapModal();
 
   const filtered = FESTIVALS.filter(f => typeFilter === 'All' || f.type === typeFilter);
 
@@ -65,7 +67,9 @@ export default function Festivals() {
                   <h4><Star size={14} fill="currentColor" /> Best Places to Experience</h4>
                   <div className="fest-places">
                     {fest.bestPlaces.map((place, j) => (
-                      <span key={j} className="fest-place-chip"><MapPin size={11} /> {place}</span>
+                      <span key={j} className="fest-place-chip clickable" onClick={(e) => { e.stopPropagation(); showMap(place); }}>
+                        <MapPin size={11} /> {place}
+                      </span>
                     ))}
                   </div>
                 </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, Star, Utensils, Camera, Map as MapIcon, Globe } from 'lucide-react';
 import db from '../utils/database';
+import { useMapModal } from '../context/MapModalContext';
 import './CityDetail.css';
 
 // Extended mock data for city details
@@ -68,6 +69,7 @@ export default function CityDetail() {
   const [city, setCity] = useState(null);
   const [activeTab, setActiveTab] = useState('places');
   const [wikiInfo, setWikiInfo] = useState('');
+  const { showMap } = useMapModal();
 
   useEffect(() => {
     // Find the city in the database
@@ -152,7 +154,7 @@ export default function CityDetail() {
           {activeTab === 'places' && (
             <div className="places-grid">
               {details.places.map((place, i) => (
-                <div key={i} className="place-card">
+                <div key={i} className="place-card clickable" onClick={() => showMap(`${place.name}, ${city.name}`)}>
                   <img src={place.image} alt={place.name} loading="lazy" />
                   <div className="place-info">
                     <h4>{place.name}</h4>
