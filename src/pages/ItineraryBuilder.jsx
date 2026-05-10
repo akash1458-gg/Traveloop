@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useToast } from '../context/ToastContext';
 import db from '../utils/database';
-import { formatDate } from '../utils/helpers';
+import { formatDate, formatCurrency } from '../utils/helpers';
 import { Plus, Trash2, GripVertical, MapPin, Calendar, ArrowLeft, Eye, ChevronDown, ChevronUp, Search, X } from 'lucide-react';
 import './ItineraryBuilder.css';
 
@@ -203,7 +203,7 @@ export default function ItineraryBuilder() {
                                   <span className="activity-type badge badge-primary" style={{ marginLeft: 8 }}>{info?.type}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-success-light)' }}>${act.cost}</span>
+                                  <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-success-light)' }}>{formatCurrency(act.cost)}</span>
                                   <button className="btn btn-ghost btn-icon btn-sm" onClick={() => removeActivity(act.id)}>
                                     <X size={14} />
                                   </button>
@@ -236,7 +236,7 @@ export default function ItineraryBuilder() {
                                 </div>
                               </div>
                               <div className="flex items-center gap-2">
-                                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-success-light)' }}>${act.cost}</span>
+                                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-success-light)' }}>{formatCurrency(act.cost)}</span>
                                 <Plus size={16} style={{ color: 'var(--color-primary)' }} />
                               </div>
                             </div>

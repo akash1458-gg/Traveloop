@@ -47,7 +47,7 @@ export default function Budget() {
   const barData = tripData ? {
     labels: tripData.stops.map(s => db.getById('cities', s.city_id)?.name || 'Unknown'),
     datasets: [{
-      label: 'Cost per City ($)',
+      label: 'Cost per City (₹)',
       data: tripData.stops.map(s => {
         const acts = db.query('trip_activities', a => a.stop_id === s.id);
         return acts.reduce((sum, a) => sum + (a.cost || 0), 0);

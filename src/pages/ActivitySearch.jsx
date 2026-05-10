@@ -13,7 +13,7 @@ export default function ActivitySearch() {
   const filtered = allActivities.filter(a => {
     const matchSearch = a.name.toLowerCase().includes(search.toLowerCase());
     const matchType = type === 'all' || a.type === type;
-    const matchCost = costRange === 'all' || (costRange === 'free' && a.cost === 0) || (costRange === 'budget' && a.cost > 0 && a.cost <= 30) || (costRange === 'mid' && a.cost > 30 && a.cost <= 80) || (costRange === 'premium' && a.cost > 80);
+    const matchCost = costRange === 'all' || (costRange === 'free' && a.cost === 0) || (costRange === 'budget' && a.cost > 0 && a.cost <= 1000) || (costRange === 'mid' && a.cost > 1000 && a.cost <= 3000) || (costRange === 'premium' && a.cost > 3000);
     return matchSearch && matchType && matchCost;
   }).slice(0, 30);
 
@@ -37,9 +37,9 @@ export default function ActivitySearch() {
         <select className="form-input" style={{ width: 'auto' }} value={costRange} onChange={e => setCostRange(e.target.value)}>
           <option value="all">Any Price</option>
           <option value="free">Free</option>
-          <option value="budget">$1 - $30</option>
-          <option value="mid">$31 - $80</option>
-          <option value="premium">$80+</option>
+          <option value="budget">₹1 - ₹1,000</option>
+          <option value="mid">₹1,001 - ₹3,000</option>
+          <option value="premium">₹3,000+</option>
         </select>
       </div>
 
@@ -52,7 +52,7 @@ export default function ActivitySearch() {
                 <span className={`badge badge-${act.type === 'Adventure' ? 'warning' : act.type === 'Food & Drink' ? 'success' : 'primary'}`}>
                   {act.type}
                 </span>
-                <span className="activity-cost">{act.cost === 0 ? 'Free' : `$${act.cost}`}</span>
+                <span className="activity-cost">{act.cost === 0 ? 'Free' : `₹${act.cost}`}</span>
               </div>
               <h3 className="activity-card-name">{act.name}</h3>
               <p className="activity-card-desc">{act.description}</p>

@@ -75,7 +75,7 @@ export default function CreateTrip() {
               <FileText size={16} /> Trip Name *
             </label>
             <input id="trip-name" name="name" className={`form-input ${errors.name ? 'error' : ''}`}
-              placeholder="e.g., European Adventure 2026" value={form.name} onChange={handleChange} maxLength={100} />
+              placeholder="e.g., Golden Triangle India 2026" value={form.name} onChange={handleChange} maxLength={100} />
             {errors.name && <span className="form-error">{errors.name}</span>}
           </div>
 
@@ -107,10 +107,10 @@ export default function CreateTrip() {
 
           <div className="form-group">
             <label className="form-label" htmlFor="trip-budget">
-              <DollarSign size={16} /> Budget (USD)
+              <DollarSign size={16} /> Budget (₹ INR)
             </label>
             <input id="trip-budget" name="budget" type="number" min="0" className={`form-input ${errors.budget ? 'error' : ''}`}
-              placeholder="e.g., 3000" value={form.budget} onChange={handleChange} />
+              placeholder="e.g., 50000" value={form.budget} onChange={handleChange} />
             {errors.budget && <span className="form-error">{errors.budget}</span>}
           </div>
 
@@ -149,7 +149,7 @@ export default function CreateTrip() {
               {form.start_date && form.end_date && (
                 <span className="preview-dates"><Calendar size={14} /> {form.start_date} to {form.end_date}</span>
               )}
-              {form.budget && <span className="preview-budget"><DollarSign size={14} /> Budget: ${form.budget}</span>}
+              {form.budget && <span className="preview-budget"><DollarSign size={14} /> Budget: ₹{form.budget}</span>}
             </div>
           </div>
         </div>

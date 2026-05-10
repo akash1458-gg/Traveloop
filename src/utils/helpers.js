@@ -2,18 +2,18 @@
 
 export const formatDate = (dateStr) => {
   if (!dateStr) return '';
-  return new Date(dateStr).toLocaleDateString('en-US', {
+  return new Date(dateStr).toLocaleDateString('en-IN', {
     month: 'short', day: 'numeric', year: 'numeric'
   });
 };
 
 export const formatDateShort = (dateStr) => {
   if (!dateStr) return '';
-  return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return new Date(dateStr).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' });
 };
 
-export const formatCurrency = (amount, currency = 'USD') => {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount);
+export const formatCurrency = (amount, currency = 'INR') => {
+  return new Intl.NumberFormat('en-IN', { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount);
 };
 
 export const daysBetween = (start, end) => {

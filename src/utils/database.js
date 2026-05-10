@@ -56,8 +56,13 @@ const db = {
 
   clear: (table) => setTable(table, []),
 
-  isSeeded: () => !!localStorage.getItem(DB_PREFIX + 'seeded'),
-  markSeeded: () => localStorage.setItem(DB_PREFIX + 'seeded', 'true'),
+  isSeeded: () => localStorage.getItem(DB_PREFIX + 'seeded') === 'v2_india',
+  markSeeded: () => localStorage.setItem(DB_PREFIX + 'seeded', 'v2_india'),
+
+  clearAll: () => {
+    const keys = Object.keys(localStorage).filter(k => k.startsWith(DB_PREFIX));
+    keys.forEach(k => localStorage.removeItem(k));
+  },
 };
 
 export default db;
