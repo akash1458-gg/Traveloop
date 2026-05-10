@@ -1,0 +1,172 @@
+.itinerary-hero {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  min-height: 250px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.itinerary-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.itinerary-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itinerary-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 14, 23, 0.95) 0%, rgba(10, 14, 23, 0.3) 100%);
+}
+
+.itinerary-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-8);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.itinerary-desc {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  max-width: 600px;
+}
+
+.itinerary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.itinerary-meta span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.itinerary-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.view-toggle {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.budget-bar {
+  margin-bottom: var(--space-6);
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: var(--space-2);
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--space-5);
+  animation: fadeInUp var(--transition-slow) ease-out both;
+}
+
+.timeline-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: var(--space-5);
+  box-shadow: 0 0 0 4px var(--color-bg-primary);
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: var(--color-border-light);
+  margin: var(--space-1) 0;
+}
+
+.timeline-content {
+  flex: 1;
+  margin-bottom: var(--space-4);
+}
+
+.timeline-city-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.timeline-city-img {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.timeline-activities {
+  margin-top: var(--space-4);
+  padding-left: var(--space-2);
+  border-left: 2px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.timeline-activity {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding-left: var(--space-3);
+  position: relative;
+}
+
+.timeline-activity-dot {
+  position: absolute;
+  left: -7px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  border: 2px solid var(--color-bg-primary);
+}
+
+.timeline-activity-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeline-activity-name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .itinerary-hero-content { padding: var(--space-5); }
+  .itinerary-actions { flex-wrap: wrap; }
+}

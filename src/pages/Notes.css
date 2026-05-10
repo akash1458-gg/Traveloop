@@ -1,0 +1,10 @@
+.notes-layout { display: flex; flex-direction: column; gap: var(--space-5); }
+.note-form { display: flex; flex-direction: column; gap: var(--space-4); }
+.notes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.note-card { transition: transform var(--transition-fast); }
+.note-card:hover { transform: translateY(-2px); }
+.note-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2); }
+.note-header h3 { font-family: var(--font-display); font-weight: 600; }
+.note-content { font-size: var(--text-sm); color: var(--color-text-secondary); white-space: pre-wrap; line-height: 1.6; margin-bottom: var(--space-3); }
+.note-time { font-size: var(--text-xs); color: var(--color-text-muted); }
+@media (max-width: 640px) { .notes-grid { grid-template-columns: 1fr; } }

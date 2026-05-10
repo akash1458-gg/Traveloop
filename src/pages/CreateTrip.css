@@ -1,0 +1,94 @@
+.create-trip-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.create-trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.char-count {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.cover-picker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.cover-option {
+  height: 60px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.cover-option:hover { border-color: var(--color-border-light); }
+.cover-option.selected { border-color: var(--color-primary); box-shadow: var(--shadow-glow); }
+.cover-option img { width: 100%; height: 100%; object-fit: cover; }
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Preview */
+.trip-preview { position: sticky; top: var(--space-8); }
+
+.preview-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.preview-image { height: 160px; overflow: hidden; }
+.preview-image img { width: 100%; height: 100%; object-fit: cover; }
+.preview-placeholder {
+  width: 100%; height: 100%;
+  background: var(--color-bg-tertiary);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text-muted); font-size: var(--text-sm);
+}
+
+.preview-body {
+  padding: var(--space-4);
+  display: flex; flex-direction: column; gap: var(--space-2);
+}
+
+.preview-body h4 { font-family: var(--font-display); font-weight: 600; }
+.preview-desc { font-size: var(--text-sm); color: var(--color-text-secondary); }
+.preview-dates, .preview-budget {
+  display: flex; align-items: center; gap: var(--space-1);
+  font-size: var(--text-xs); color: var(--color-text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .create-trip-layout { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .trip-preview { display: none; }
+}

@@ -1,0 +1,47 @@
+.budget-layout { display: flex; flex-direction: column; gap: var(--space-6); }
+
+.budget-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.budget-stat-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.budget-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.chart-card h3 { margin-bottom: var(--space-4); }
+.chart-container { height: 280px; position: relative; }
+
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.budget-table th, .budget-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.budget-table th {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .budget-summary { grid-template-columns: 1fr; }
+  .budget-charts { grid-template-columns: 1fr; }
+}

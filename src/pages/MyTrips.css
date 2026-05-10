@@ -1,0 +1,93 @@
+.trips-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.filter-chips {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.trips-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.trip-list-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-4);
+  animation: fadeInUp var(--transition-slow) ease-out both;
+}
+
+.trip-list-image {
+  width: 120px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.trip-list-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trip-list-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.trip-list-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.trip-list-top h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.trip-list-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trip-list-meta {
+  display: flex;
+  gap: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+.trip-list-meta span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.trip-list-actions {
+  display: flex;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .trip-list-card { flex-direction: column; align-items: stretch; }
+  .trip-list-image { width: 100%; height: 140px; }
+  .trip-list-actions { justify-content: flex-end; }
+}
