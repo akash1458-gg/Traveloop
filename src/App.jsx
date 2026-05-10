@@ -23,6 +23,7 @@ import Experiences from './pages/Experiences';
 import Festivals from './pages/Festivals';
 import ColoursOfIndia from './pages/ColoursOfIndia';
 import TravelForLife from './pages/TravelForLife';
+import CityDetail from './pages/CityDetail';
 
 import './App.css';
 
@@ -80,6 +81,7 @@ export default function App() {
               <Route path="/festivals" element={<Festivals />} />
               <Route path="/colours" element={<ColoursOfIndia />} />
               <Route path="/travel-for-life" element={<TravelForLife />} />
+              <Route path="/city/:cityId" element={<CityDetail />} />
             </Route>
 
             {/* Default */}

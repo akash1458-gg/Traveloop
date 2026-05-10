@@ -1,0 +1,267 @@
+.city-detail-page {
+  padding-bottom: var(--space-10);
+}
+
+.city-hero {
+  position: relative;
+  height: 350px;
+  width: 100%;
+  margin-bottom: var(--space-6);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  overflow: hidden;
+}
+
+.city-hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.city-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+}
+
+.back-btn {
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-6);
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateX(-4px);
+}
+
+.city-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-8);
+  color: white;
+}
+
+.city-region {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #FFCC00;
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.city-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 3rem;
+  margin-bottom: var(--space-3);
+  line-height: 1.1;
+}
+
+.city-meta {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.city-rating, .city-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  background: rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(5px);
+}
+
+.city-rating {
+  color: #FFCC00;
+}
+
+.city-body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.city-description-card {
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-border);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-8);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.city-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+  overflow-x: auto;
+}
+
+.city-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.city-tab:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
+}
+
+.city-tab.active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-5);
+}
+
+.place-card {
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.place-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.place-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.place-info {
+  padding: var(--space-4);
+}
+
+.place-info h4 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.place-info p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-5);
+}
+
+.food-card {
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: center;
+}
+
+.food-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.food-info {
+  padding: var(--space-3);
+}
+
+.food-info h4 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.food-spot {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-border);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+}
+
+.act-details h4 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.act-time {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.act-price {
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: #FFCC00;
+}
+
+@media (max-width: 768px) {
+  .city-hero { height: 280px; }
+  .city-title { font-size: 2rem; }
+  .city-hero-content { padding: var(--space-5); }
+  .activity-row { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .act-price { align-self: flex-start; }
+}

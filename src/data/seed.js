@@ -62,30 +62,77 @@ const ACTIVITY_TEMPLATES = [
   { type: 'Shopping', items: ['Local Bazaar', 'Handicraft Shopping', 'Designer Boutiques', 'Night Market', 'Artisan Crafts', 'Spice Market'] },
 ];
 
+const REALISTIC_ACTIVITIES = {
+  'in-delhi': [
+    { name: 'Red Fort Heritage Walk', type: 'Culture', cost: 800, duration: 2.5, desc: 'Explore the magnificent Mughal-era red sandstone fortress.' },
+    { name: 'Chandni Chowk Street Food Tour', type: 'Food & Drink', cost: 1500, duration: 3, desc: 'Taste iconic local delicacies like Chole Bhature and Jalebis in Old Delhi.' },
+    { name: 'Qutub Minar Sunset Visit', type: 'Sightseeing', cost: 500, duration: 2, desc: 'Witness the UNESCO World Heritage minaret bathed in golden hour light.' },
+    { name: 'Akshardham Temple Evening Show', type: 'Culture', cost: 1000, duration: 3.5, desc: 'Experience the stunning musical fountain and laser show.' }
+  ],
+  'in-agra': [
+    { name: 'Taj Mahal Sunrise Tour', type: 'Sightseeing', cost: 2500, duration: 3, desc: 'See the iconic monument of love without the crowds at dawn.' },
+    { name: 'Agra Fort Historical Guided Walk', type: 'Culture', cost: 1200, duration: 2, desc: 'Discover the history of the Mughal Empire at this massive red fort.' },
+    { name: 'Petha Tasting Experience', type: 'Food & Drink', cost: 400, duration: 1, desc: 'Try Agra\'s famous translucent soft candy made from ash gourd.' }
+  ],
+  'in-jaipur': [
+    { name: 'Amber Fort Elephant/Jeep Safari', type: 'Adventure', cost: 2000, duration: 3.5, desc: 'Ascend to the hilltop palace complex in traditional style.' },
+    { name: 'Hawa Mahal & City Palace Tour', type: 'Sightseeing', cost: 1500, duration: 4, desc: 'Explore the pink sandstone Palace of Winds and royal residence.' },
+    { name: 'Rajasthani Cooking Class', type: 'Culture', cost: 2500, duration: 3, desc: 'Learn to cook Dal Bati Churma with a local family.' },
+    { name: 'Bapu Bazaar Handicraft Shopping', type: 'Shopping', cost: 0, duration: 2, desc: 'Shop for textiles, mojari shoes, and traditional jewelry.' }
+  ],
+  'in-mumbai': [
+    { name: 'Elephanta Caves Ferry & Guide', type: 'Culture', cost: 1800, duration: 5, desc: 'Take a boat to explore ancient rock-cut Shiva temples.' },
+    { name: 'Dharavi Slum Guided Tour', type: 'Culture', cost: 1200, duration: 2.5, desc: 'An eye-opening ethical tour of Asia\'s largest bustling slum industries.' },
+    { name: 'Chowpatty Beach Street Food', type: 'Food & Drink', cost: 600, duration: 2, desc: 'Enjoy Vada Pav and Pav Bhaji by the Arabian Sea.' },
+    { name: 'Bollywood Studio Tour', type: 'Entertainment', cost: 3500, duration: 4, desc: 'Go behind the scenes of India\'s massive film industry.' }
+  ],
+  'in-goa': [
+    { name: 'Dudhsagar Waterfalls Trek', type: 'Adventure', cost: 1500, duration: 6, desc: 'Trek to the magnificent four-tiered waterfall in the jungle.' },
+    { name: 'Baga Beach Water Sports', type: 'Adventure', cost: 2500, duration: 3, desc: 'Parasailing, jet skiing, and banana boat rides on the popular beach.' },
+    { name: 'Old Goa Churches Walk', type: 'Culture', cost: 800, duration: 2.5, desc: 'Visit the Basilica of Bom Jesus and Se Cathedral.' },
+    { name: 'Sunset Cruise on Mandovi River', type: 'Relaxation', cost: 1000, duration: 2, desc: 'Relax with Goan music and dancing as the sun sets.' }
+  ]
+};
+
 const generateActivities = () => {
   const activities = [];
-  // Costs in INR
   const costs = { Sightseeing: [200, 1500], 'Food & Drink': [300, 3000], Adventure: [800, 5000], Culture: [100, 1000], Relaxation: [500, 4000], Shopping: [0, 0] };
   const durations = { Sightseeing: [1, 3], 'Food & Drink': [1, 2.5], Adventure: [2, 5], Culture: [1, 2], Relaxation: [2, 4], Shopping: [1, 3] };
 
   CITIES.forEach(city => {
-    ACTIVITY_TEMPLATES.forEach(tmpl => {
-      tmpl.items.forEach((name, i) => {
-        const [minC, maxC] = costs[tmpl.type];
-        const [minD, maxD] = durations[tmpl.type];
-        const costVal = Math.round(minC + Math.random() * (maxC - minC));
-        const dur = +(minD + Math.random() * (maxD - minD)).toFixed(1);
+    // Inject realistic activities if available
+    if (REALISTIC_ACTIVITIES[city.id]) {
+      REALISTIC_ACTIVITIES[city.id].forEach((act, i) => {
         activities.push({
-          id: `act-${city.id}-${tmpl.type}-${i}`,
+          id: `act-${city.id}-real-${i}`,
           city_id: city.id,
-          name: `${name} in ${city.name}`,
-          type: tmpl.type,
-          cost: costVal,
-          duration: dur,
-          description: `Experience ${name.toLowerCase()} in the heart of ${city.name}, ${city.country}.`,
+          name: act.name,
+          type: act.type,
+          cost: act.cost,
+          duration: act.duration,
+          description: act.desc,
         });
       });
-    });
+    } else {
+      // Fallback to generic random activities for other cities
+      ACTIVITY_TEMPLATES.forEach(tmpl => {
+        tmpl.items.slice(0, 2).forEach((name, i) => { // Reduced to 2 random per category
+          const [minC, maxC] = costs[tmpl.type] || [100, 1000];
+          const [minD, maxD] = durations[tmpl.type] || [1, 3];
+          const costVal = Math.round(minC + Math.random() * (maxC - minC));
+          const dur = +(minD + Math.random() * (maxD - minD)).toFixed(1);
+          activities.push({
+            id: `act-${city.id}-${tmpl.type}-${i}`,
+            city_id: city.id,
+            name: `${name} in ${city.name}`,
+            type: tmpl.type,
+            cost: costVal,
+            duration: dur,
+            description: `Experience ${name.toLowerCase()} in the heart of ${city.name}, ${city.country}.`,
+          });
+        });
+      });
+    }
   });
   return activities;
 };
@@ -124,9 +171,9 @@ export const seedDatabase = () => {
   db.insert('stops', { id: 'stop-2', trip_id: 'trip-sample', city_id: 'in-agra', order: 2, arrival_date: '2026-07-04', departure_date: '2026-07-07' });
   db.insert('stops', { id: 'stop-3', trip_id: 'trip-sample', city_id: 'in-jaipur', order: 3, arrival_date: '2026-07-07', departure_date: '2026-07-10' });
 
-  db.insert('trip_activities', { id: 'ta-1', stop_id: 'stop-1', activity_id: 'act-in-delhi-Sightseeing-0', day: '2026-07-01', time_slot: '09:00', cost: 500 });
-  db.insert('trip_activities', { id: 'ta-2', stop_id: 'stop-1', activity_id: 'act-in-delhi-Food & Drink-0', day: '2026-07-02', time_slot: '12:00', cost: 800 });
-  db.insert('trip_activities', { id: 'ta-3', stop_id: 'stop-2', activity_id: 'act-in-agra-Culture-0', day: '2026-07-05', time_slot: '10:00', cost: 300 });
+  db.insert('trip_activities', { id: 'ta-1', stop_id: 'stop-1', activity_id: 'act-in-delhi-real-0', day: '2026-07-01', time_slot: '09:00', cost: 800 });
+  db.insert('trip_activities', { id: 'ta-2', stop_id: 'stop-1', activity_id: 'act-in-delhi-real-1', day: '2026-07-02', time_slot: '12:00', cost: 1500 });
+  db.insert('trip_activities', { id: 'ta-3', stop_id: 'stop-2', activity_id: 'act-in-agra-real-0', day: '2026-07-05', time_slot: '06:00', cost: 2500 });
 
   ['Passport', 'Phone Charger', 'Travel Adapter', 'Sunscreen', 'Comfortable Walking Shoes', 'Rain Jacket', 'First Aid Kit', 'Camera'].forEach((name, i) => {
     const cats = ['Documents', 'Electronics', 'Electronics', 'Toiletries', 'Clothing', 'Clothing', 'Health', 'Electronics'];

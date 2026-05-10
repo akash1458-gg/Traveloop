@@ -237,7 +237,7 @@ export default function Dashboard() {
 
         <div className="destination-scroll" ref={scrollRef}>
           {indianCities.map((city, i) => (
-            <div key={city.id} className="destination-card" onClick={() => navigate('/cities')}
+            <div key={city.id} className="destination-card" onClick={() => navigate(`/city/${city.id}`)}
               style={{ animationDelay: `${i * 60}ms` }} id={`dest-${city.id}`}>
               <div className="dest-img">
                 <img src={city.image} alt={city.name} loading="lazy" />
@@ -270,7 +270,7 @@ export default function Dashboard() {
 
         <div className="world-grid">
           {worldCities.map((city, i) => (
-            <div key={city.id} className="world-card" onClick={() => navigate('/cities')}
+            <div key={city.id} className="world-card" onClick={() => navigate(`/city/${city.id}`)}
               style={{ animationDelay: `${i * 80}ms` }} id={`world-${city.id}`}>
               <img src={city.image} alt={city.name} loading="lazy" />
               <div className="world-card-overlay">
