@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { validators, validateForm } from '../utils/validators';
-import { Mail, Lock, Eye, EyeOff, ArrowRight, User } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowRight, User, Plane } from 'lucide-react';
 import './Auth.css';
 
 export default function Signup() {
@@ -61,8 +61,8 @@ export default function Signup() {
         <div className="auth-card glass-strong">
           <div className="auth-header">
             <div className="auth-logo">
-              <span>✈️</span>
-              <span className="text-gradient" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'var(--text-2xl)' }}>
+              <Plane size={24} fill="black" color="black" />
+              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'var(--text-2xl)', color: 'black' }}>
                 Traveloop
               </span>
             </div>
@@ -78,7 +78,7 @@ export default function Signup() {
               <div className="input-with-icon">
                 <User size={18} className="input-icon" />
                 <input id="signup-name" name="name" type="text" className={`form-input ${errors.name ? 'error' : ''}`}
-                  placeholder="John Doe" value={form.name} onChange={handleChange} />
+                  placeholder="Nikolai Tesla" value={form.name} onChange={handleChange} />
               </div>
               {errors.name && <span className="form-error">{errors.name}</span>}
             </div>
@@ -88,7 +88,7 @@ export default function Signup() {
               <div className="input-with-icon">
                 <Mail size={18} className="input-icon" />
                 <input id="signup-email" name="email" type="email" className={`form-input ${errors.email ? 'error' : ''}`}
-                  placeholder="you@example.com" value={form.email} onChange={handleChange} />
+                  placeholder="you@gmail.com" value={form.email} onChange={handleChange} />
               </div>
               {errors.email && <span className="form-error">{errors.email}</span>}
             </div>

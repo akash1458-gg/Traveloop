@@ -75,18 +75,18 @@ export default function CityDetail() {
     // Find the city in the database
     const foundCity = db.getById('cities', cityId);
     setCity(foundCity);
-    
+
     if (foundCity) {
-        // Try to fetch real wiki description if no local detail is present
-        const detail = CITY_DETAILS[cityId.toLowerCase()];
-        if (!detail) {
-            fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(foundCity.name)}`)
-              .then(res => res.json())
-              .then(data => {
-                  if (data.extract) setWikiInfo(data.extract);
-              })
-              .catch(err => console.error('Wiki fetch error', err));
-        }
+      // Try to fetch real wiki description if no local detail is present
+      const detail = CITY_DETAILS[cityId.toLowerCase()];
+      if (!detail) {
+        fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(foundCity.name)}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data.extract) setWikiInfo(data.extract);
+          })
+          .catch(err => console.error('Wiki fetch error', err));
+      }
     }
   }, [cityId]);
 

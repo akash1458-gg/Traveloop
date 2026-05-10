@@ -14,7 +14,7 @@ export const MapModalProvider = ({ children }) => {
     setPlace(placeName);
     setLoading(true);
     
-    // Extract search term (e.g., "Taj Mahal, Agra" -> "Taj Mahal")
+
     const searchTerm = placeName.split(',')[0].trim();
     
     fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(searchTerm)}`)

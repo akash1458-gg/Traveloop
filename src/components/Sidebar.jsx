@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import {
   Home, Map, PlusCircle, Search, DollarSign, CheckSquare,
   FileText, Share2, User, LogOut, Compass, BarChart3, ChevronLeft, ChevronRight,
-  Sparkles, CalendarDays, Palette, Leaf
+  Sparkles, CalendarDays, Palette, Leaf, Plane
 } from 'lucide-react';
 import { useState } from 'react';
 import './Sidebar.css';
@@ -13,9 +13,10 @@ const navItems = [
   { to: '/trips', icon: Map, label: 'My Trips' },
   { to: '/create-trip', icon: PlusCircle, label: 'New Trip' },
   { type: 'divider' },
-  { to: '/cities', icon: Compass, label: 'Explore Cities' },
+  { to: '/bookings', icon: Compass, label: 'Bookings (Flight/Train)' },
+  { to: '/ai-manager', icon: Sparkles, label: 'AI Trip Manager' },
   { to: '/activities', icon: Search, label: 'Activities' },
-  { to: '/experiences', icon: Sparkles, label: 'Experiences' },
+  { to: '/experiences', icon: Map, label: 'Experiences' },
   { to: '/festivals', icon: CalendarDays, label: 'Festivals' },
   { to: '/colours', icon: Palette, label: 'Colours of India' },
   { to: '/travel-for-life', icon: Leaf, label: 'Travel for LiFE' },
@@ -32,6 +33,7 @@ export default function Sidebar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -39,59 +41,82 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`} id="main-sidebar">
-      <div className="sidebar-header">
-        {!collapsed && (
-          <div className="sidebar-logo" onClick={() => navigate('/dashboard')}>
-            <span className="logo-icon">✈️</span>
-            <span className="logo-text">Traveloop</span>
-          </div>
-        )}
-        <button
-          className="sidebar-toggle"
-          onClick={() => setCollapsed(!collapsed)}
-          id="sidebar-toggle-btn"
-          aria-label="Toggle sidebar"
-        >
-          {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+    <>
+      {/* Mobile Top Bar */}
+      <div className="mobile-header">
+        <div className="sidebar-logo" onClick={() => navigate('/dashboard')}>
+          <span className="logo-icon"><Plane size={24} fill="black" color="black" /></span>
+          <span className="logo-text" style={{ color: 'white' }}>Traveloop</span>
+        </div>
+        <button className="mobile-toggle" onClick={() => setMobileOpen(true)}>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
         </button>
       </div>
 
-      <nav className="sidebar-nav">
-        {navItems.map((item, i) => {
-          if (item.type === 'divider') return <div key={i} className="sidebar-divider" />;
-          const Icon = item.icon;
-          return (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
-              id={`nav-${item.to.replace('/', '')}`}
-            >
-              <Icon size={20} />
-              {!collapsed && <span>{item.label}</span>}
-            </NavLink>
-          );
-        })}
-      </nav>
+      {/* Mobile Overlay */}
+      {mobileOpen && <div className="sidebar-mobile-overlay" onClick={() => setMobileOpen(false)} />}
 
-      <div className="sidebar-footer">
-        {!collapsed && user && (
-          <div className="sidebar-user">
-            <div className="sidebar-user-avatar">
-              {user.name ? user.name[0].toUpperCase() : 'U'}
+      <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`} id="main-sidebar">
+        <div className="sidebar-header">
+          {!collapsed && (
+            <div className="sidebar-logo" onClick={() => { setMobileOpen(false); navigate('/dashboard'); }}>
+              <span className="logo-icon"><Plane size={24} fill="black" color="black" /></span>
+              <span className="logo-text" style={{ color: 'white' }}>Traveloop</span>
             </div>
-            <div className="sidebar-user-info">
-              <span className="sidebar-user-name">{user.name}</span>
-              <span className="sidebar-user-email">{user.email}</span>
+          )}
+          <button
+            className="sidebar-toggle desktop-only"
+            onClick={() => setCollapsed(!collapsed)}
+            id="sidebar-toggle-btn"
+            aria-label="Toggle sidebar"
+          >
+            {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+          </button>
+          
+          <button className="sidebar-close-mobile mobile-only" onClick={() => setMobileOpen(false)}>
+            ×
+          </button>
+        </div>
+
+        <nav className="sidebar-nav">
+          {navItems.map((item, i) => {
+            if (item.type === 'divider') return <div key={i} className="sidebar-divider" />;
+            const Icon = item.icon;
+            return (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
+                id={`nav-${item.to.replace('/', '')}`}
+              >
+                <Icon size={20} />
+                {!collapsed && <span>{item.label}</span>}
+              </NavLink>
+            );
+          })}
+        </nav>
+
+        <div className="sidebar-footer">
+          {!collapsed && user && (
+            <div className="sidebar-user">
+              <div className="sidebar-user-avatar">
+                {user.name ? user.name[0].toUpperCase() : 'U'}
+              </div>
+              <div className="sidebar-user-info">
+                <span className="sidebar-user-name">{user.name}</span>
+                <span className="sidebar-user-email">{user.email}</span>
+              </div>
             </div>
-          </div>
-        )}
-        <button className="sidebar-link logout-btn" onClick={handleLogout} id="logout-btn">
-          <LogOut size={20} />
-          {!collapsed && <span>Logout</span>}
-        </button>
-      </div>
-    </aside>
+          )}
+          <button className="sidebar-link logout-btn" onClick={handleLogout} id="logout-btn">
+            <LogOut size={20} />
+            {!collapsed && <span>Logout</span>}
+          </button>
+        </div>
+      </aside>
+    </>
   );
 }

@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   width: var(--sidebar-width);
-  background: rgba(10, 14, 23, 0.95);
+  background: var(--color-bg-card);
   backdrop-filter: blur(20px);
   border-right: 1px solid var(--color-border);
   display: flex;
@@ -42,9 +42,7 @@
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 800;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: black; /* Changed to black */
 }
 
 .sidebar-toggle {
@@ -162,7 +160,59 @@
   background: rgba(239, 68, 68, 0.1) !important;
 }
 
-/* Mobile hamburger */
+/* Mobile Hamburger */
+.mobile-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-card);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: calc(var(--z-sticky) - 1);
+  width: 100%;
+}
+
+.mobile-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1);
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+}
+
+.sidebar-mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: calc(var(--z-sticky) - 1);
+}
+
+.sidebar-close-mobile {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.desktop-only { display: flex; }
+.mobile-only { display: none; }
+
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
@@ -170,5 +220,17 @@
   }
   .sidebar.mobile-open {
     transform: translateX(0);
+  }
+  .mobile-header {
+    display: flex;
+  }
+  .sidebar-mobile-overlay {
+    display: block;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
   }
 }

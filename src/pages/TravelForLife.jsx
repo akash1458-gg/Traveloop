@@ -32,7 +32,7 @@ export default function TravelForLife() {
       {/* Hero Banner */}
       <div className="tfl-hero animate-fadeInUp">
         <div className="tfl-hero-bg">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=400&fit=crop" alt="Sustainable travel" />
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&h=400&fit=crop" alt="Sustainable travel" />
           <div className="tfl-hero-overlay" />
         </div>
         <div className="tfl-hero-content">

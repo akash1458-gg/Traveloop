@@ -12,7 +12,6 @@ import CreateTrip from './pages/CreateTrip';
 import MyTrips from './pages/MyTrips';
 import ItineraryBuilder from './pages/ItineraryBuilder';
 import ItineraryView from './pages/ItineraryView';
-import CitySearch from './pages/CitySearch';
 import ActivitySearch from './pages/ActivitySearch';
 import Budget from './pages/Budget';
 import Packing from './pages/Packing';
@@ -24,6 +23,9 @@ import Festivals from './pages/Festivals';
 import ColoursOfIndia from './pages/ColoursOfIndia';
 import TravelForLife from './pages/TravelForLife';
 import CityDetail from './pages/CityDetail';
+import StateDetail from './pages/StateDetail';
+import Bookings from './pages/Bookings';
+import AIManager from './pages/AIManager';
 import { MapModalProvider } from './context/MapModalContext';
 
 import './App.css';
@@ -72,7 +74,6 @@ export default function App() {
               <Route path="/create-trip" element={<CreateTrip />} />
               <Route path="/itinerary-builder/:tripId" element={<ItineraryBuilder />} />
               <Route path="/itinerary/:tripId" element={<ItineraryView />} />
-              <Route path="/cities" element={<CitySearch />} />
               <Route path="/activities" element={<ActivitySearch />} />
               <Route path="/budget" element={<Budget />} />
               <Route path="/packing" element={<Packing />} />
@@ -84,6 +85,9 @@ export default function App() {
               <Route path="/colours" element={<ColoursOfIndia />} />
               <Route path="/travel-for-life" element={<TravelForLife />} />
               <Route path="/city/:cityId" element={<CityDetail />} />
+              <Route path="/state/:stateId" element={<StateDetail />} />
+              <Route path="/bookings" element={<Bookings />} />
+              <Route path="/ai-manager" element={<AIManager />} />
             </Route>
 
             {/* Default */}

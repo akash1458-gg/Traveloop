@@ -8,6 +8,8 @@
   margin-left: var(--sidebar-width);
   min-height: 100vh;
   transition: margin-left var(--transition-base);
+  overflow-x: hidden;
+  background-color: #F5F0EB;
 }
 
 /* When sidebar is collapsed */
@@ -24,7 +26,11 @@
 }
 
 @media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
   .app-main {
     margin-left: 0;
+    width: 100%;
   }
 }

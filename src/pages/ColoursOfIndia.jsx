@@ -6,49 +6,49 @@ import './ColoursOfIndia.css';
 const COLOURS = [
   {
     id: 'saffron', name: 'Saffron', hex: '#FF6B35', region: 'Rajasthan',
-    image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&h=600&fit=crop',
     description: 'The color of courage and sacrifice. Seen in Rajasthani turbans, temple flags, and desert sunsets.',
     places: ['Jaipur — The Pink City', 'Jodhpur — Fort Mehrangarh', 'Pushkar — Holy Lake']
   },
   {
     id: 'gold', name: 'Gold', hex: '#FFCC00', region: 'Tamil Nadu',
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&h=600&fit=crop',
     description: 'The color of prosperity. Gleaming temple gopurams, silk sarees, and harvest celebrations.',
     places: ['Madurai — Meenakshi Temple', 'Thanjavur — Big Temple', 'Kanchipuram — Silk Capital']
   },
   {
     id: 'blue', name: 'Royal Blue', hex: '#1E40AF', region: 'Rajasthan',
-    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&h=600&fit=crop',
     description: 'The iconic blue of Jodhpur. Entire neighborhoods painted in shades of indigo and cobalt.',
     places: ['Jodhpur — The Blue City', 'Udaipur — Lake Palace', 'Chefchaouen influence']
   },
   {
     id: 'green', name: 'Emerald Green', hex: '#10B981', region: 'Kerala',
-    image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&h=600&fit=crop',
     description: 'God\'s Own Country. Lush tea plantations, backwaters, and coconut groves define Kerala\'s green.',
     places: ['Munnar — Tea Gardens', 'Alleppey — Backwaters', 'Wayanad — Forests']
   },
   {
     id: 'pink', name: 'Pink', hex: '#EC4899', region: 'Rajasthan',
-    image: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=800&h=600&fit=crop',
     description: 'Jaipur was painted pink to welcome Prince Albert in 1876. The tradition lives on in every building.',
     places: ['Jaipur — Hawa Mahal', 'Jaipur — City Palace', 'Jaipur — Nahargarh Fort']
   },
   {
     id: 'white', name: 'Marble White', hex: '#F0F0F0', region: 'Uttar Pradesh',
-    image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&h=600&fit=crop',
     description: 'The pristine white of the Taj Mahal, Jain temples, and the Rann of Kutch white desert.',
     places: ['Agra — Taj Mahal', 'Ranakpur — Jain Temple', 'Kutch — White Desert']
   },
   {
     id: 'red', name: 'Vermillion Red', hex: '#DC2626', region: 'Pan India',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=800&h=600&fit=crop',
     description: 'Sacred sindoor, Holi colors, Red Fort sandstone — red runs through India\'s spiritual and historical veins.',
     places: ['Delhi — Red Fort', 'Mathura — Holi Festival', 'Varanasi — Sindoor Traditions']
   },
   {
     id: 'turquoise', name: 'Turquoise', hex: '#06B6D4', region: 'Ladakh',
-    image: 'https://images.unsplash.com/photo-1626015365107-aa95e5d0ca01?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1626015365107-aa95e5d0ca01?w=800&h=600&fit=crop',
     description: 'The stunning turquoise of Pangong Lake, prayer flags fluttering against clear Himalayan skies.',
     places: ['Pangong Lake', 'Nubra Valley', 'Tso Moriri Lake']
   },

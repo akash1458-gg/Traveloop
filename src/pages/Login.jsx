@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { validators, validateForm } from '../utils/validators';
-import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowRight, Plane } from 'lucide-react';
 import './Auth.css';
 
 export default function Login() {
@@ -56,8 +56,8 @@ export default function Login() {
         <div className="auth-card glass-strong">
           <div className="auth-header">
             <div className="auth-logo">
-              <span>✈️</span>
-              <span className="text-gradient" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'var(--text-2xl)' }}>
+              <Plane size={24} fill="black" color="black" />
+              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'var(--text-2xl)', color: 'black' }}>
                 Traveloop
               </span>
             </div>
