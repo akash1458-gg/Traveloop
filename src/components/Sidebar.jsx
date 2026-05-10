@@ -2,7 +2,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   Home, Map, PlusCircle, Search, DollarSign, CheckSquare,
-  FileText, Share2, User, LogOut, Compass, BarChart3, ChevronLeft, ChevronRight
+  FileText, Share2, User, LogOut, Compass, BarChart3, ChevronLeft, ChevronRight,
+  Sparkles, CalendarDays, Palette, Leaf
 } from 'lucide-react';
 import { useState } from 'react';
 import './Sidebar.css';
@@ -11,8 +12,13 @@ const navItems = [
   { to: '/dashboard', icon: Home, label: 'Dashboard' },
   { to: '/trips', icon: Map, label: 'My Trips' },
   { to: '/create-trip', icon: PlusCircle, label: 'New Trip' },
+  { type: 'divider' },
   { to: '/cities', icon: Compass, label: 'Explore Cities' },
   { to: '/activities', icon: Search, label: 'Activities' },
+  { to: '/experiences', icon: Sparkles, label: 'Experiences' },
+  { to: '/festivals', icon: CalendarDays, label: 'Festivals' },
+  { to: '/colours', icon: Palette, label: 'Colours of India' },
+  { to: '/travel-for-life', icon: Leaf, label: 'Travel for LiFE' },
   { type: 'divider' },
   { to: '/budget', icon: DollarSign, label: 'Budget' },
   { to: '/packing', icon: CheckSquare, label: 'Packing List' },
@@ -20,6 +26,7 @@ const navItems = [
   { type: 'divider' },
   { to: '/profile', icon: User, label: 'Profile' },
 ];
+
 
 export default function Sidebar() {
   const { user, logout } = useAuth();

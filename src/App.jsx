@@ -19,6 +19,10 @@ import Packing from './pages/Packing';
 import Notes from './pages/Notes';
 import Profile from './pages/Profile';
 import ShareTrip from './pages/ShareTrip';
+import Experiences from './pages/Experiences';
+import Festivals from './pages/Festivals';
+import ColoursOfIndia from './pages/ColoursOfIndia';
+import TravelForLife from './pages/TravelForLife';
 
 import './App.css';
 
@@ -72,6 +76,10 @@ export default function App() {
               <Route path="/notes" element={<Notes />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/share/:tripId" element={<ShareTrip />} />
+              <Route path="/experiences" element={<Experiences />} />
+              <Route path="/festivals" element={<Festivals />} />
+              <Route path="/colours" element={<ColoursOfIndia />} />
+              <Route path="/travel-for-life" element={<TravelForLife />} />
             </Route>
 
             {/* Default */}
