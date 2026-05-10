@@ -98,6 +98,30 @@ export const seedDatabase = () => {
     status: 'planning',
   });
 
+  db.insert('trips', {
+    id: 'trip-past',
+    user_id: 'user-demo',
+    name: 'Rajasthan Heritage Tour',
+    description: 'A historical journey through the palaces and forts of Rajasthan.',
+    start_date: '2024-12-10',
+    end_date: '2024-12-20',
+    cover_image: '/images/img-dest-rajasthan.jpg',
+    budget: 80000,
+    status: 'completed',
+  });
+
+  // Stops for past trip
+  const st1 = { id: 'stop-p1', trip_id: 'trip-past', city_id: 'in-jaipur', arrival_date: '2024-12-10', departure_date: '2024-12-15' };
+  const st2 = { id: 'stop-p2', trip_id: 'trip-past', city_id: 'in-agra', arrival_date: '2024-12-15', departure_date: '2024-12-20' };
+  db.insert('stops', st1);
+  db.insert('stops', st2);
+
+  // Activities for past trip
+  db.insert('trip_activities', { id: 'tact-p1', stop_id: 'stop-p1', activity_id: 'act-in-jaipur-Sightseeing-0', cost: 1500, date: '2024-12-11' });
+  db.insert('trip_activities', { id: 'tact-p2', stop_id: 'stop-p1', activity_id: 'act-in-jaipur-Food & Drink-0', cost: 2500, date: '2024-12-12' });
+  db.insert('trip_activities', { id: 'tact-p3', stop_id: 'stop-p2', activity_id: 'act-in-agra-Sightseeing-0', cost: 1200, date: '2024-12-16' });
+  db.insert('trip_activities', { id: 'tact-p4', stop_id: 'stop-p2', activity_id: 'act-in-agra-Food & Drink-0', cost: 1800, date: '2024-12-17' });
+
   db.markSeeded();
   console.log('✅ Traveloop database seeded with Indian States & Cities');
 };

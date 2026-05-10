@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import db from '../utils/database';
 import { formatCurrency } from '../utils/helpers';
-import { DollarSign, TrendingUp, AlertTriangle, PieChart } from 'lucide-react';
+import { DollarSign, TrendingUp, AlertTriangle, PieChart, GitGraph } from 'lucide-react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import { Pie, Bar } from 'react-chartjs-2';
 import './Budget.css';
@@ -115,15 +115,68 @@ export default function Budget() {
             </div>
           </div>
 
+          {/* Flow Chart Section */}
+          <div className="card budget-flow-section animate-fadeInUp" style={{ animationDelay: '0.1s' }}>
+            <div className="section-header">
+              <GitGraph size={20} className="text-primary" />
+              <h3 className="heading-4">Budget Flow</h3>
+            </div>
+            
+            <div className="flow-container">
+              {/* Source */}
+              <div className="flow-node source">
+                <div className="node-label">Total Budget</div>
+                <div className="node-value">{formatCurrency(tripData.trip.budget)}</div>
+              </div>
+
+              <div className="flow-connectors">
+                <div className="connector-line main" />
+              </div>
+
+              {/* Categories */}
+              <div className="flow-categories">
+                {Object.entries(tripData.breakdown).filter(([_, val]) => val > 0).map(([cat, val], i) => (
+                  <div key={cat} className="category-branch" style={{ animationDelay: `${i * 100}ms` }}>
+                    <div className="branch-line" />
+                    <div className="flow-node category" style={{ '--node-color': i === 0 ? '#FF6B35' : '#00B4D8' }}>
+                      <div className="node-label">{cat}</div>
+                      <div className="node-value">{formatCurrency(val)}</div>
+                      <div className="node-percent">{tripData.totalSpent > 0 ? Math.round((val / tripData.totalSpent) * 100) : 0}%</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flow-footer">
+                <div className="remaining-node">
+                  <div className="node-label">Remaining</div>
+                  <div className="node-value" style={{ color: tripData.trip.budget - tripData.totalSpent < 0 ? 'var(--color-error)' : 'var(--color-success)' }}>
+                    {formatCurrency(tripData.trip.budget - tripData.totalSpent)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Charts */}
           <div className="budget-charts">
             <div className="card chart-card">
-              <h3 className="heading-4">Cost by Category</h3>
-              <div className="chart-container">{pieData && <Pie data={pieData} options={chartOptions} />}</div>
+              <div className="section-header">
+                <PieChart size={20} />
+                <h3 className="heading-4">Category Distribution</h3>
+              </div>
+              <div className="chart-wrapper">
+                {pieData && <Pie data={pieData} options={chartOptions} />}
+              </div>
             </div>
             <div className="card chart-card">
-              <h3 className="heading-4">Cost per City</h3>
-              <div className="chart-container">{barData && <Bar data={barData} options={chartOptions} />}</div>
+              <div className="section-header">
+                <TrendingUp size={20} />
+                <h3 className="heading-4">City-wise Expenses</h3>
+              </div>
+              <div className="chart-wrapper">
+                {barData && <Bar data={barData} options={chartOptions} />}
+              </div>
             </div>
           </div>
 

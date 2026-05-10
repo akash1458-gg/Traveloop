@@ -60,6 +60,121 @@ const CITY_DETAILS = {
       { title: 'Elephanta Caves Ferry & Guide', price: 2000, time: '5 hours' },
       { title: 'Bollywood Studio Tour', price: 3500, time: '4 hours' }
     ]
+  },
+  'in-jaipur': {
+    description: 'Jaipur is the capital of India’s Rajasthan state. It evokes the royal family that once ruled the region and that, in 1727, founded what is now called the Old City, or "Pink City" for its trademark building color.',
+    places: [
+      { name: 'Amer Fort', image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=500&h=300&fit=crop', desc: 'Grand 16th-century hilltop fort' },
+      { name: 'Hawa Mahal', image: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=500&h=300&fit=crop', desc: 'Iconic pink sandstone palace' },
+      { name: 'City Palace', image: 'https://images.unsplash.com/photo-1590490359854-dfba19688d70?w=500&h=300&fit=crop', desc: 'Royal residence & museum' }
+    ],
+    food: [
+      { name: 'Dal Baati Churma', image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=300&h=300&fit=crop', popularAt: 'Chokhi Dhani' },
+      { name: 'Lal Maas', image: 'https://images.unsplash.com/photo-1626315570857-e1ee4ec36437?w=300&h=300&fit=crop', popularAt: 'Spice Court' },
+      { name: 'Ghevar', image: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=300&h=300&fit=crop', popularAt: 'LMB' }
+    ],
+    activities: [
+      { title: 'Balloon Safari', price: 12000, time: '2 hours' },
+      { title: 'Amber Fort Elephant Ride', price: 3000, time: '1 hour' },
+      { title: 'Pink City Night Tour', price: 1800, time: '3 hours' }
+    ]
+  },
+  'in-varanasi': {
+    description: 'Varanasi is a city in the northern Indian state of Uttar Pradesh dating to the 11th century B.C. Regarded as the spiritual capital of India, it draws Hindu pilgrims who bathe in the Ganges River’s sacred waters.',
+    places: [
+      { name: 'Dashashwamedh Ghat', image: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&h=300&fit=crop', desc: 'Main ghat on the Ganges' },
+      { name: 'Kashi Vishwanath Temple', image: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&h=300&fit=crop', desc: 'Sacred Hindu temple' },
+      { name: 'Sarnath', image: 'https://images.unsplash.com/photo-1590490359854-dfba19688d70?w=500&h=300&fit=crop', desc: 'Buddhist pilgrimage site' }
+    ],
+    food: [
+      { name: 'Banarasi Paan', image: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=300&h=300&fit=crop', popularAt: 'Local Shops' },
+      { name: 'Kachori Sabzi', image: 'https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=300&h=300&fit=crop', popularAt: 'Old City Lanes' }
+    ],
+    activities: [
+      { title: 'Ganga Aarti Evening Ceremony', price: 500, time: '2 hours' },
+      { title: 'Early Morning Boat Ride', price: 1000, time: '1.5 hours' }
+    ]
+  },
+  'in-goa': {
+    description: 'Goa is a state in western India with coastlines stretching along the Arabian Sea. Its long history as a Portuguese colony prior to 1961 is evident in its preserved 17th-century churches and the area’s tropical spice plantations.',
+    places: [
+      { name: 'Baga Beach', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&h=300&fit=crop', desc: 'Popular North Goa beach' },
+      { name: 'Basilica of Bom Jesus', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&h=300&fit=crop', desc: 'UNESCO World Heritage church' },
+      { name: 'Dudhsagar Falls', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&h=300&fit=crop', desc: 'Four-tiered majestic waterfall' }
+    ],
+    food: [
+      { name: 'Fish Recheado', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=300&h=300&fit=crop', popularAt: 'Shacks & Restaurants' },
+      { name: 'Bebinca', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=300&h=300&fit=crop', popularAt: 'Local Bakeries' }
+    ],
+    activities: [
+      { title: 'Scuba Diving at Grande Island', price: 4500, time: '6 hours' },
+      { title: 'Spice Plantation Tour', price: 1200, time: '3 hours' },
+      { title: 'Casino Night', price: 3000, time: '5 hours' }
+    ]
+  },
+  'in-bengaluru': {
+    description: 'Bengaluru (also called Bangalore) is the capital of India\'s southern Karnataka state. The center of India\'s high-tech industry, the city is also known for its parks and nightlife.',
+    places: [
+      { name: 'Lalbagh Botanical Garden', image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=500&h=300&fit=crop', desc: 'Historic garden with glass house' },
+      { name: 'Bangalore Palace', image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=500&h=300&fit=crop', desc: 'Tudor-style royal palace' },
+      { name: 'Cubbon Park', image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=500&h=300&fit=crop', desc: 'Central lung of the city' }
+    ],
+    food: [
+      { name: 'Bisi Bele Bath', image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=300&h=300&fit=crop', popularAt: 'MTR / Vidyarthi Bhavan' },
+      { name: 'Craft Beer', image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=300&h=300&fit=crop', popularAt: 'Indiranagar / Koramangala' }
+    ],
+    activities: [
+      { title: 'Bannerghatta Safari', price: 800, time: '4 hours' },
+      { title: 'Pub Crawl', price: 1500, time: '4 hours' }
+    ]
+  },
+  'in-kochi': {
+    description: 'Kochi (also known as Cochin) is a city in southwest India\'s coastal Kerala state. It has been a port since 1341, when a flood carved out its harbor and opened it to Arab, Chinese and European merchants.',
+    places: [
+      { name: 'Chinese Fishing Nets', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&h=300&fit=crop', desc: 'Iconic shore-operated nets' },
+      { name: 'Fort Kochi', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&h=300&fit=crop', desc: 'Colonial heritage area' },
+      { name: 'Mattancherry Palace', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&h=300&fit=crop', desc: 'Portuguese palace with murals' }
+    ],
+    food: [
+      { name: 'Kerala Prawn Curry', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=300&h=300&fit=crop', popularAt: 'Coastal Restaurants' },
+      { name: 'Meen Moliee', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=300&h=300&fit=crop', popularAt: 'Fort Kochi' }
+    ],
+    activities: [
+      { title: 'Kathakali Performance', price: 600, time: '2 hours' },
+      { title: 'Backwater Boat Cruise', price: 1500, time: '3 hours' }
+    ]
+  },
+  'in-chennai': {
+    description: 'Chennai, on the Bay of Bengal in eastern India, is the capital of the state of Tamil Nadu. The city is home to Fort St. George, built in 1644 and now a museum showcasing the city’s roots as a British military garrison.',
+    places: [
+      { name: 'Marina Beach', image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=500&h=300&fit=crop', desc: 'Longest natural urban beach' },
+      { name: 'Kapaleeshwarar Temple', image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=500&h=300&fit=crop', desc: 'Dravidian style Hindu temple' },
+      { name: 'Santhome Cathedral', image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=500&h=300&fit=crop', desc: 'Neo-Gothic Catholic church' }
+    ],
+    food: [
+      { name: 'Dosa & Idli', image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=300&h=300&fit=crop', popularAt: 'Saravana Bhavan' },
+      { name: 'Chettinad Chicken', image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=300&h=300&fit=crop', popularAt: 'Local Mess' }
+    ],
+    activities: [
+      { title: 'Mahabalipuram Day Trip', price: 2500, time: '8 hours' },
+      { title: 'Classical Dance Show', price: 800, time: '2 hours' }
+    ]
+  },
+  'in-kolkata': {
+    description: 'Kolkata (formerly Calcutta), the capital of India\'s West Bengal state, was the capital of British India until 1911. It’s known for its grand colonial architecture, art galleries and cultural festivals.',
+    places: [
+      { name: 'Victoria Memorial', image: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=500&h=300&fit=crop', desc: 'White marble monument' },
+      { name: 'Howrah Bridge', image: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=500&h=300&fit=crop', desc: 'Iconic cantilever bridge' },
+      { name: 'Dakshineswar Temple', image: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=500&h=300&fit=crop', desc: 'Goddess Kali temple' }
+    ],
+    food: [
+      { name: 'Kathi Roll', image: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=300&h=300&fit=crop', popularAt: 'Nizam\'s' },
+      { name: 'Rosogolla', image: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=300&h=300&fit=crop', popularAt: 'KC Das' }
+    ],
+    activities: [
+      { title: 'Tram Ride through City', price: 50, time: '1 hour' },
+      { title: 'Book Street Exploration', price: 0, time: '2 hours' }
+    ]
   }
 };
 
